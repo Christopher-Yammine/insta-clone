@@ -7,7 +7,7 @@ type Props = {
   type?: InputType;
 };
 
-type InputType = "text" | "password";
+type InputType = "text" | "password" | "file";
 
 const Input: FC<Props> = ({ placeholder, onChange, type = "text" }) => {
   return (
