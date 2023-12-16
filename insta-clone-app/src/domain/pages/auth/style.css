@@ -1,0 +1,28 @@
+.hero-section {
+  height: 80%;
+  margin: 0 15px;
+  justify-content: space-between;
+}
+
+.auth-box {
+  padding: 10px 20px;
+  height: 75%;
+}
+
+.auth-box > button {
+  margin-top: 10px;
+  width: 300px;
+}
+
+.auth-logo {
+  margin: 45px 0;
+}
+
+.switcher-box {
+  height: 24%;
+}
+
+.switcher-box > p {
+  margin: 0 2.5px;
+  font-size: 14px;
+}
