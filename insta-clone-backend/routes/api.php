@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FeedController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -21,3 +22,7 @@ Route::controller(UserController::class)->group(function () {
     Route::post('logout', 'logout');
     Route::post('refresh', 'refresh');
 });
+
+Route::post("/create_post", [FeedController::class, 'create_post']);
+Route::get("/get_feed", [FeedController::class, 'display_feed']);
+Route::get('/profile_feed/{id?}', [FeedController::class, 'get_profile_feed']);
