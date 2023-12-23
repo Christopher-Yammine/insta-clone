@@ -10,4 +10,13 @@ export const authDataSource = {
 
     return response;
   },
+  register: async (data: {}) => {
+    const response = await sendRequest({
+      body: data,
+      route: "/register",
+      method: "POST",
+    });
+
+    return response;
+  },
 };

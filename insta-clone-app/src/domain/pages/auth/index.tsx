@@ -1,52 +1,12 @@
-import React, { ChangeEvent, FC, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { ChangeEvent, FC } from "react";
 import Input from "../../common/base/Input";
 import Button from "../../common/base/Button";
 import InstaLogo from "../../icons/instaLogo";
-import { authDataSource } from "../../../core/dataSource/remoteDataSource/auth";
-import { local } from "../../../core/helpers/localstorage";
 import "./style.css";
-
-type LoginCredentials = {
-  email: string;
-  password: string;
-};
+import { useLogic } from "./logic.hook";
 
 const AuthPage: FC = () => {
-  const [credentials, setCredentials] = useState<LoginCredentials>({
-    email: "",
-    password: "",
-  });
-
-  const [error, setError] = useState<string>("");
-
-  const navigateTo = useNavigate();
-
-  const handleFormChange = (key: string, value: string) => {
-    setCredentials((prev) => ({
-      ...prev,
-      [key]: value,
-    }));
-  };
-
-  const handleLogin = async () => {
-    try {
-      const response = await authDataSource.login(credentials);
-
-      console.log(response);
-
-      local("token", response.authorisation.token);
-      local("type", response.authorisation.type);
-
-      navigateTo("/feed");
-    } catch (error: any) {
-      setError(error!.message);
-    }
-  };
-
-  useEffect(() => {
-    console.log(credentials);
-  }, [credentials]);
+  const { error, handleFormChange, handleLogin } = useLogic();
 
   return (
     <div className="flex center page">

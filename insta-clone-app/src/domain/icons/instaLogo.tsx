@@ -1,10 +1,14 @@
-import React from "react";
+import React, { FC } from "react";
 
-const InstaLogo = () => {
+type Props = {
+  color?: string;
+};
+
+const InstaLogo: FC<Props> = ({ color = "currentColor" }) => {
   return (
     <svg
       aria-label="Instagram"
-      fill="currentColor"
+      fill={color}
       height="29"
       role="img"
       viewBox="32 4 113 32"

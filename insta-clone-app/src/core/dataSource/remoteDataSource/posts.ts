@@ -10,4 +10,22 @@ export const postsDataSource = {
 
     return created;
   },
+  get: async (data: any) => {
+    const created = await sendRequest({
+      route: "/create_post",
+      method: "POST",
+      body: data,
+    });
+
+    return created;
+  },
+  delete: async (data: any) => {
+    const created = await sendRequest({
+      route: "/create_post",
+      method: "POST",
+      body: data,
+    });
+
+    return created;
+  },
 };

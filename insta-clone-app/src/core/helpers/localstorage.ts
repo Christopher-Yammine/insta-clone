@@ -1,6 +1,6 @@
-export const local = (key: string, value?: string) => {
+export const local = (key: string, value?: any) => {
   if (value) {
-    return localStorage.setItem(key, value);
+    localStorage.setItem(key, value);
   } else {
     return localStorage.getItem(key);
   }

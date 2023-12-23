@@ -4,6 +4,8 @@ import Input from "../../common/base/Input";
 import Button from "../../common/base/Button";
 import { postsDataSource } from "../../../core/dataSource/remoteDataSource/posts";
 import { Post } from "../../../core/types/Post";
+import { useSelector } from "react-redux";
+import { useLogin } from "../../../core/hooks/login.hook";
 
 const FeedPage = () => {
   const [postData, setPostData] = useState({
@@ -12,6 +14,13 @@ const FeedPage = () => {
   });
   const [feed, setFeed] = useState([]);
   const [posts, setposts] = useState<Post[]>([]);
+  const userLocalData = useSelector((global: any) => global.User);
+
+  const [isLoggedIn, token] = useLogin();
+
+  useEffect(() => {
+    console.log(isLoggedIn);
+  }, [isLoggedIn]);
 
   const handleFormChange = (key: string, value: any) => {
     setPostData((prev) => ({
@@ -53,6 +62,10 @@ const FeedPage = () => {
   useEffect(() => {
     console.log(posts);
   }, [posts]);
+
+  useEffect(() => {
+    console.log(userLocalData);
+  }, [userLocalData]);
 
   return (
     <div className="flex column">
